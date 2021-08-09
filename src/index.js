@@ -6,6 +6,7 @@ import AuthService from './service/auth_service';
 
 const authService = new AuthService();
 
+console.log(authService);
 ReactDOM.render(
   <React.StrictMode>
     <App authService={authService} />
