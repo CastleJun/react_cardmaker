@@ -1,14 +1,21 @@
 import React from 'react';
 import styles from './card_edit_form.module.css';
 import Button from '../button/button';
-import ImageFileInput from '../image_file_input/image_file_input';
+
 //배열을 사용해도 괜찮지만, object를 사용해서 더 빨리 작업 할 수 있다.
 //배열을 사용하게 되면 O(n)이기 떄문에 input(배열의 길이가 길어지면 길어질수록) 성능이 나빠진다.
-const CardEditForm = ({ card, updateCard, deleteCard }) => {
+const CardEditForm = ({ FileInput, card, updateCard, deleteCard }) => {
   const { name, company, title, email, message, theme, fileName, fileURL } =
     card;
   const onSubmit = () => {
     deleteCard(card);
+  };
+  const onFileChange = file => {
+    updateCard({
+      ...card,
+      fileName: file.name,
+      fileURL: file.url,
+    });
   };
   const onChange = event => {
     if (event.currentTarget == null) return;
@@ -66,7 +73,7 @@ const CardEditForm = ({ card, updateCard, deleteCard }) => {
         onChange={onChange}
       />
       <div className={styles.fileInput}>
-        <ImageFileInput />
+        <FileInput name={fileName} onFileChange={onFileChange} />
       </div>
       <Button name="Delete" onClick={onSubmit} />
     </form>

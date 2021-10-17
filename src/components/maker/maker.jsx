@@ -5,7 +5,7 @@ import Footer from '../footer/footer';
 import Header from '../header/header';
 import Preview from '../preview/preview';
 import styles from './maker.module.css';
-const Maker = ({ authService }) => {
+const Maker = ({ FileInput, authService }) => {
   const [cards, setCards] = useState({
     // key 는 카드의 아이디이고 이 자체가 card 의 오브젝트가 될 아이임
     1: {
@@ -84,6 +84,7 @@ const Maker = ({ authService }) => {
       <Header onLogout={onLogout} />
       <div className={styles.container}>
         <Editor
+          FileInput={FileInput}
           cards={cards}
           addCard={createOrUpdateCard}
           updateCard={createOrUpdateCard}
