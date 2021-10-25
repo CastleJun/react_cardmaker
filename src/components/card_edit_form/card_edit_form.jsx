@@ -5,8 +5,7 @@ import Button from '../button/button';
 //배열을 사용해도 괜찮지만, object를 사용해서 더 빨리 작업 할 수 있다.
 //배열을 사용하게 되면 O(n)이기 떄문에 input(배열의 길이가 길어지면 길어질수록) 성능이 나빠진다.
 const CardEditForm = ({ FileInput, card, updateCard, deleteCard }) => {
-  const { name, company, title, email, message, theme, fileName, fileURL } =
-    card;
+  const { name, company, title, email, message, theme, fileName } = card;
   const onSubmit = () => {
     deleteCard(card);
   };
